@@ -38,15 +38,13 @@ fun main(args: Array<String>) {
             val one = launch { showMails() }
         }
     }
-    println("Completed in $time ms")
+    println("Fast Completed in $time ms")
 
 
-    val start = System.currentTimeMillis()
-    println("Start: " + start)
-    runBlocking {
-        showSlowMails()
+    val timeTwo = measureTimeMillis {
+        runBlocking {
+            showSlowMails()
+        }
     }
-    val stop = System.currentTimeMillis()
-    println("Stop: " + stop)
-    println("Toke " + (stop - start) + "ms")
+    println("Slow Completed in $timeTwo ms")
 }
